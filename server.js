@@ -1,4 +1,4 @@
-// import required modules
+// Import required modules
 const express = require("express"); // framework to build the RESTful API
 const cors = require("cors"); // allows cross-origin requests
 const bcrypt = require("bcrypt"); // for password hashing
@@ -89,7 +89,7 @@ function authenticateToken(req, res, next) {
   const token = authHeader && authHeader.split(" ")[1];
 
   if (token == null) {
-    // if there is no token provided,
+    // if there is no token provided
     // send a 401 response with an authentication error message
     return res.status(401).send("No token provided");
   }
@@ -108,3 +108,18 @@ function authenticateToken(req, res, next) {
     next();
   });
 }
+
+// protected route example
+app.get("/protected", authenticateToken, (req, res) => {
+  // access the authenticated user from req.user
+  const { id, email } = req.user;
+
+  // respond with a protected message
+  res.send(`Protected route accessed by user ${email}`);
+});
+
+// start the server
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
