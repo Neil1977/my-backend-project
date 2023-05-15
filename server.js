@@ -109,7 +109,7 @@ function authenticateToken(req, res, next) {
   });
 }
 
-// protected route example
+// protected route example to amend when API data added etc
 app.get("/protected", authenticateToken, (req, res) => {
   // access the authenticated user from req.user
   const { id, email } = req.user;
