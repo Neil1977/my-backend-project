@@ -1,4 +1,4 @@
-INITIAL SETUP ONLY NEED TO ADD FILES/FOLDERS ETC AND CHOSEN API DATA AS PER PROJECT STRUCTURE BELOW
+INITIAL SETUP ONLY NEED TO ADD FILES/FOLDERS ETC AND CHOSEN API DATA AS PER PROJECT STRUCTURE BELOW - SEE ALSO BOTTOM OF README FOR ACTIONS STILL TO COMPLETE
 
 My Backend Project
 
@@ -75,20 +75,33 @@ Use the README.md file to document the project and provide instructions for runn
 │ ├── index.js
 │ └── ...
 ├── server
+│ ├── config
+│ │ └── .env
 │ ├── controllers
-│ │ ├── ...
+│ │ └── ...
 │ ├── db
 │ │ ├── migrations
 │ │ └── seeds
 │ ├── models
-│ │ ├── ...
+│ │ └── ...
 │ ├── routes
-│ │ ├── ...
+│ │ └── ...
 │ ├── tests
-│ │ ├── ...
+│ │ └── ...
 │ ├── index.js
 │ └── ...
 ├── README.md
 └── ...
 
 # my-backend-project
+
+STILL TO COMPLETE WORK IN PROGRESS:
+API Data: You can start adding the necessary files and folders related to the API data within the server directory. This may include creating the db directory for managing database-related operations such as migrations and seeds. You can also create the models directory for defining your data models.
+
+Routes: Create the routes directory within the server directory. This directory will contain the route handlers for different API endpoints. You can start by creating a separate file for each resource or group of related routes (e.g., users.js, entries.js).
+
+Index.js: Create an index.js file within the server directory. This file will serve as the entry point for your server application. It will import and configure the necessary dependencies, set up the server, and connect to the database.
+
+Tests: If you plan to write tests for your backend API, create a tests directory within the server directory. This directory will contain your test files. You can organize them based on the corresponding directories and files in your main codebase (e.g., controllers, routes, models).
+
+Client-side Code: You can create the client directory at the root level. Within the client directory, you can set up the necessary folders and files for your React client application, such as public and src. This is where you can place your App.js, index.js, and other client-side code files
