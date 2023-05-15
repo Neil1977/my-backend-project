@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt"); // for password hashing
 const jwt = require("jsonwebtoken"); // for user authentication
 const sqlite3 = require("sqlite3").verbose(); // SQLite database library
 require("dotenv").config(); // read .env file variables
+const { auth } = require("express-openid-connect");
 
 // initialize the Express app
 const app = express();
@@ -12,6 +13,18 @@ const app = express();
 // middleware
 app.use(express.json()); // parse incoming JSON payloads
 app.use(cors()); // enable cross-origin resource sharing
+
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  secret: process.env.AUTH0_SECRET,
+  baseURL: process.env.BASE_URL,
+  clientID: process.env.CLIENT_ID,
+  issuerBaseURL: process.env.ISSUER_BASE_URL,
+};
+
+// auth router attaches /login, /logout, and /callback routes to the baseURL
+app.use(auth(config));
 
 // create a connection to the database
 const db = new sqlite3.Database("./database.sqlite");
