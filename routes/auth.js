@@ -28,7 +28,7 @@ router.get("/callback", (req, res) => {
         // Generate a JWT token using Auth0
         const token = jwt.sign(
           { sub: req.oidc.user.sub }, // Include the user's sub (subject) identifier in the token
-          "fcc5709a62306ca14fac1dfc7ca83884ec29317febd2a427810415a9235e60b8",
+          process.env.JWT_SECRET || "default_secret",
           { expiresIn: "1h" } // Set the token expiration time
         );
 

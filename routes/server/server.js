@@ -1,5 +1,6 @@
 // Import required modules
 const express = require("express"); // framework to build the RESTful API
+const routes = require("./routes/routes.js");
 const cors = require("cors"); // allows cross-origin requests
 const bcrypt = require("bcrypt"); // for password hashing
 const jwt = require("jsonwebtoken"); // for user authentication
@@ -14,7 +15,7 @@ const app = express();
 const config = {
   authRequired: false,
   auth0Logout: true,
-  secret: "a long, randomly-generated string stored in env",
+  secret: process.env.JWT_SECRET, // using JWT_SECRET from .env file
   baseURL: "http://localhost:3000",
   clientID: "uoV8TW1fofgs6bCpDM2xOGlZSDpIPTIG",
   issuerBaseURL: "https://dev-zel8ugr8zgj0slv2.us.auth0.com",
@@ -31,10 +32,6 @@ app.use(auth(config));
 app.get("/", (req, res) => {
   res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
 });
-// auth router attaches /login, /logout, and /callback routes to the baseURL
-// configuring your development environment to trust the SSL certificate or by disabling SSL certificate verification for testing purposes.
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-app.use(auth(config));
 
 // create a connection to the database
 const db = new sqlite3.Database("./database.sqlite");

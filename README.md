@@ -31,8 +31,8 @@ Reading, adding, deleting, and editing entries from the database are all covered
 - [x] Modify the registration endpoint to include password hashing using bcrypt.
 - [x] Generate JSON Web Tokens (JWTs) using Auth0 for user authorization.
 - [x] Implement the routes and handlers for OAuth authentication, including `/login`, `/logout`, and `/callback`.
-- [ ] Use the `jsonwebtoken` library to generate JSON Web Tokens (JWTs) using Auth0 for user authorization.
-- [ ] Implement the necessary middleware to protect routes and prevent unauthorized access.
+- [x] Use the `jsonwebtoken` library to generate JSON Web Tokens (JWTs) using Auth0 for user authorization.
+- [x] Implement the necessary middleware to protect routes and prevent unauthorized access.
 - [ ] Test your backend API to ensure that authentication and authorization are working as expected.
 
 ## Tier 4 - Authorization
