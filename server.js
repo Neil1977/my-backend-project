@@ -10,20 +10,30 @@ const { auth } = require("express-openid-connect");
 // initialize the Express app
 const app = express();
 
+// Auth0 Router configuration
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  secret: "a long, randomly-generated string stored in env",
+  baseURL: "http://localhost:3000",
+  clientID: "uoV8TW1fofgs6bCpDM2xOGlZSDpIPTIG",
+  issuerBaseURL: "https://dev-zel8ugr8zgj0slv2.us.auth0.com",
+};
+
 // middleware
 app.use(express.json()); // parse incoming JSON payloads
 app.use(cors()); // enable cross-origin resource sharing
 
-const config = {
-  authRequired: false,
-  auth0Logout: true,
-  secret: process.env.AUTH0_SECRET,
-  baseURL: process.env.BASE_URL,
-  clientID: process.env.CLIENT_ID,
-  issuerBaseURL: process.env.ISSUER_BASE_URL,
-};
-
 // auth router attaches /login, /logout, and /callback routes to the baseURL
+app.use(auth(config));
+
+// req.isAuthenticated is provided from the auth router
+app.get("/", (req, res) => {
+  res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
+});
+// auth router attaches /login, /logout, and /callback routes to the baseURL
+// configuring your development environment to trust the SSL certificate or by disabling SSL certificate verification for testing purposes.
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 app.use(auth(config));
 
 // create a connection to the database
