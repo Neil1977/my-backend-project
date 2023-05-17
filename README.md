@@ -1,7 +1,5 @@
 ## My Backend Project
 
-## My Backend Project
-
 Design and build a fully-functional, back-end-only API, complete with Authentication and Authorization, protecting some (or all) routes with Authorization.
 
 ## Tech Stack
@@ -67,6 +65,7 @@ my-backend-project/
 ├── config/
 │ └── .env
 ├── controllers/
+│ ├── authController.js
 │ └── ...
 ├── db/
 │ ├── migrations/
@@ -75,10 +74,12 @@ my-backend-project/
 │ └── ...
 ├── routes/
 │ ├── auth.js
+│ ├── routes.js
 │ └── ...
 ├── tests/
 │ └── ...
-├── index.js
+├── middleware.js
+├── server.js
 └── ...
 
 # my-backend-project
