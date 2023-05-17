@@ -85,27 +85,33 @@ my-backend-project/
 
 STILL TO COMPLETE WORK IN PROGRESS:
 Instructions
-Set up the client-side code:
-Create the client directory at the root level.
-Within the client directory, set up the necessary folders and files for your React client application, such as public and src.
-Place your App.js, `index.js
-Create the client directory at the root level.
-Within the client directory, set up the necessary folders and files for your React client application, such as public and src.
-Place your App.js, index.js, and other client-side code files in the appropriate directories.
+Task 1: Implement OAuth 2.0 with Auth0 for user authentication
+To implement OAuth 2.0 with Auth0 for user authentication, you need to complete the following steps:
 
-API Data (Not associated with any specific tier):
+Set up an account with Auth0 (if you haven't already).
+Configure the config object in the server.js file with your Auth0 credentials. Update the values of clientID, issuerBaseURL, and AUTH0_SECRET in the .env file with your own values.
+Add the necessary routes and handlers for OAuth authentication using Auth0. This includes /login, /logout, and /callback routes. You can create separate files in the routes directory, such as auth.js, to handle these routes.
+Use the auth() middleware provided by express-openid-connect to enable the authentication routes. You have already added this middleware in the existing code.
+Test the authentication routes by logging in and logging out using the Auth0 authentication flow.
+Task 2: Hash passwords using bcrypt
+To hash passwords using bcrypt, you need to modify the registration endpoint (/register) as follows:
 
-Start adding the necessary files and folders related to the API data within the server directory. This may include creating the db directory for managing database-related operations such as migrations and seeds. Can also create the models directory for defining your data models.
-
-Routes (Associated with Tier 2):
-Create the routes directory within the server directory. This directory will contain the route handlers for different API endpoints. Can start by creating a separate file for each resource or group of related routes (e.g., users.js, entries.js).
-
-Index.js (Associated with Tier 2):
-Create an index.js file within the server directory. This file will serve as the entry point for your server application. It will import and configure the necessary dependencies, set up the server, and connect to the database.
-
-Tests (Associated with Tier 2 or later):
-Create a tests directory within the server directory. This directory will contain your test files. You can organize them based on the corresponding directories and files in your main codebase (e.g., controllers, routes, models).
-Client-side Code (Associated with Tier 5 or later):
-Can create the client directory at the root level. Within the client directory, you can set up the necessary folders and files for your React client application, such as public and src. This is where you can place your App.js, index.js, and other client-side code files.
+Import the bcrypt module at the top of the server.js file.
+Modify the /register endpoint to include password hashing using bcrypt before inserting the new user into the database. You can use the bcrypt.hash() function to hash the password.
+Update the database insertion code to use the hashed password instead of the plain text password.
+Task 3: Create the routes, tests, and other directories
+Create a new directory called routes within the server directory. This directory will contain the route handlers for different API endpoints. Start by creating a separate file for each resource or group of related routes (e.g., users.js, entries.js).
+Create a new directory called tests within the server directory. This directory will contain your test files. You can organize them based on the corresponding directories and files in your main codebase (e.g., controllers, routes, models).
+You can also create additional directories such as controllers, models, db, etc., as mentioned in the project structure.
+Task 4: Create an index.js file within the server directory
+Create an index.js file within the server directory. This file will serve as the entry point for your server application.
+In the index.js file, import and configure the necessary dependencies, such as express, cors, and other modules used in your code.
+Set up the server and connect to the database. You can copy the existing server setup code from server.js and modify it if needed.
+Task 5: Update the protected route and add middleware for authorization
+Modify the existing /protected route in server.js to use the authenticateToken middleware. This middleware verifies the JWT token and allows access to the protected route.
+Create a new file in the routes directory, such as protected.js, to define the protected routes and handlers.
+Implement the authenticateToken middleware function, which verifies the JWT token. You can keep this function in the server.js file or create a separate file for middleware functions.
+Add the middleware function to the protected route in the protected.js route file.
+These tasks will help you continue building your project. Once you complete these steps, you can proceed with the next tiers mentioned in the readme, such as implementing associated data, handling admin functionality, and organizing the client-side code in the client directory
 
 # my-backend-project
