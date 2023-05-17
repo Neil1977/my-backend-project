@@ -65,21 +65,28 @@ my-backend-project/
 ├── config/
 │ └── .env
 ├── controllers/
-│ ├── authController.js
+│ ├── authController.js (To be added)
 │ └── ...
 ├── db/
-│ ├── migrations/
-│ └── seeds/
+│ ├── migrations/ (To be added)
+│ └── seeds/ (To be added)
 ├── models/
-│ └── ...
+│ └── ... (To be added)
 ├── routes/
-│ ├── auth.js
-│ ├── routes.js
+│ ├── auth.js (Completed)
+│ ├── routes.js (Completed)
 │ └── ...
 ├── tests/
-│ └── ...
-├── middleware.js
-├── server.js
+│ └── ... (To be added)
+├── middleware.js (Completed)
+├── server.js (Completed)
+├── authorizationMiddleware.js (To be added)
+├── associatedDataRoutes.js (To be added)
+├── associatedDataHandlers.js (To be added)
+├── oidcAuth.js (To be added)
+├── adminFunctionality.js (To be added)
 └── ...
+
+## Please note that this diagram reflects the current state based on the progress made in this chat thread. The completed files are marked as "(Completed)", and the remaining files and folders are indicated with "(To be added)" and will need to be created to complete the desired project structure
 
 # my-backend-project
