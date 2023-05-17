@@ -87,6 +87,6 @@ my-backend-project/
 ├── adminFunctionality.js (To be added)
 └── ...
 
-## Please note that this diagram reflects the current state based on the progress made in this chat thread. The completed files are marked as "(Completed)", and the remaining files and folders are indicated with "(To be added)" and will need to be created to complete the desired project structure
+## Please note that this diagram reflects the current state based on the progress made. The completed files are marked as "(Completed)", and the remaining files and folders are indicated with "(To be added)" and will need to be created to complete the desired project structure
 
 # my-backend-project
