@@ -1,5 +1,7 @@
 ## My Backend Project
 
+## My Backend Project
+
 Design and build a fully-functional, back-end-only API, complete with Authentication and Authorization, protecting some (or all) routes with Authorization.
 
 ## Tech Stack
@@ -28,7 +30,7 @@ Reading, adding, deleting, and editing entries from the database are all covered
 - [x] Implement user registration in the `/register` endpoint.
 - [x] Modify the registration endpoint to include password hashing using bcrypt.
 - [x] Generate JSON Web Tokens (JWTs) using Auth0 for user authorization.
-- [ ] Implement the routes and handlers for OAuth authentication, including `/login`, `/logout`, and `/callback`.
+- [x] Implement the routes and handlers for OAuth authentication, including `/login`, `/logout`, and `/callback`.
 - [ ] Use the `jsonwebtoken` library to generate JSON Web Tokens (JWTs) using Auth0 for user authorization.
 - [ ] Implement the necessary middleware to protect routes and prevent unauthorized access.
 - [ ] Test your backend API to ensure that authentication and authorization are working as expected.
@@ -72,6 +74,7 @@ my-backend-project/
 ├── models/
 │ └── ...
 ├── routes/
+│ ├── auth.js
 │ └── ...
 ├── tests/
 │ └── ...
