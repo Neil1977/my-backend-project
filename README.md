@@ -1,6 +1,4 @@
-INITIAL SETUP ONLY NEED TO ADD FILES/FOLDERS ETC AND CHOSEN API DATA AS PER PROJECT STRUCTURE BELOW - SEE ALSO BOTTOM OF README FOR ACTIONS STILL TO COMPLETE
-
-# My Backend Project
+## My Backend Project
 
 Design and build a fully-functional, back-end-only API, complete with Authentication and Authorization, protecting some (or all) routes with Authorization.
 
