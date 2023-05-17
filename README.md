@@ -22,6 +22,8 @@ Reading, adding, deleting, and editing entries from the database are all covered
 
 Already imported the necessary modules (bcrypt, jsonwebtoken) for password hashing and authentication.
 
+## I AM HERE - SEE ALSO STILL TO COMPLETE NOTES AT BOTTOM OF README
+
 Implement OAuth 2.0 with Auth0 for user authentication by configuring the config object with your Auth0 credentials (client ID, issuer base URL, etc.).
 Add the necessary routes and handlers for OAuth authentication using Auth0. This includes /login, /logout, and /callback routes.
 Modify the registration endpoint (/register) to include password hashing using bcrypt.
