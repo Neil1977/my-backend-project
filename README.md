@@ -111,9 +111,6 @@ Reading, adding, deleting, and editing entries from the database are all covered
 
 ## Project Structure
 
-Keep the client-side code in the `client` directory.
-Keep the server-side code in the `server` directory and create separate subdirectories for `controllers`, `db`, `models`, `routes`, and `tests`.
-
 my-backend-project/
 ├── client/
 │ ├── public/
@@ -128,10 +125,10 @@ my-backend-project/
 │ ├── authController.js (To be added)
 │ └── ...
 ├── db/
-│ ├── migrations/ (To be added)
-│ └── seeds/ (To be added)
+│ ├── migrations/
+│ └── seeds/
 ├── models/
-│ └── ... (To be added)
+│ └── ...
 ├── routes/
 │ ├── auth.js (Completed)
 │ ├── routes.js (Completed)
@@ -146,6 +143,9 @@ my-backend-project/
 ├── oidcAuth.js (To be added)
 ├── adminFunctionality.js (To be added)
 └── ...
+
+Keep the client-side code in the `client` directory.
+Keep the server-side code in the `server` directory and create separate subdirectories for `controllers`, `db`, `models`, `routes`, and `tests`.
 
 Please note that this diagram reflects the current state based on the progress made. The completed files are marked as "(Completed)", and the remaining files and folders are indicated with "(To be added)" and will need to be created to complete the desired project structure.
 
