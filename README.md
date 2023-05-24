@@ -68,7 +68,8 @@ my-backend-project/
 │ └── ...
 ├── db/
 │ ├── create-database.js (Completed)
-│ └── starwars.db (Completed)
+│ ├── starwars.db (Completed)
+│ └── database.sqlite
 ├── models/
 │ └── ...
 ├── routes/
