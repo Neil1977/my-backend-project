@@ -1,5 +1,5 @@
 const request = require("supertest");
-const app = require("../server"); // Assuming your Express app is exported from server.js
+const app = require("../../server/server"); // Update the path to reflect the correct location of server.js
 
 // Setup and teardown for each test
 beforeEach(() => {

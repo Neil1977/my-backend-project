@@ -1,0 +1,20 @@
+.
+├── README.md
+├── config
+│   └── db
+├── database.sqlite
+├── directory_structure.txt
+├── package-lock.json
+├── package.json
+└── routes
+    ├── auth.js
+    ├── create-database.js
+    ├── routes.js
+    ├── server
+    │   ├── middleware.js
+    │   ├── server.js
+    │   └── tests
+    │       └── api.test.js
+    └── starwars.db
+
+6 directories, 12 files

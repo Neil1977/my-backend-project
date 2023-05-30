@@ -146,28 +146,29 @@ Reading, adding, deleting, and editing entries from the database are all covered
 ## Project Structure
 
 my-backend-project/
-├── client/
-│ ├── public/
-│ └── src/
-│ ├── App.js
-│ ├── index.js
-│ └── ...
-└── server/
+├── README.md
 ├── config/
-│ └── .env
+│ └── db/
+├── database.sqlite
+├── directory_structure.txt
+├── package-lock.json
+├── package.json
+└── routes/
+├── auth.js (Completed)
+├── create-database.js (Completed)
+├── routes.js (Completed)
+├── server/
+│ ├── middleware.js (Completed)
+│ ├── server.js (Completed)
+│ └── tests/
+│ └── api.test.js
+├── starwars.db (Completed)
 ├── controllers/
-│ ├── authController.js (Completed)
-│ └── ...
+│ └── authController.js (Completed)
 ├── db/
-│ ├── create-database.js (Completed)
-│ ├── starwars.db (Completed)
-│ └── database.sqlite
+│ └── ... (To be added)
 ├── models/
-│ └── ...
-├── routes/
-│ ├── auth.js (Completed)
-│ ├── routes.js (Completed)
-│ └── ...
+│ └── ... (To be added)
 ├── tests/
 │ └── ... (To be added)
 ├── middleware.js (Completed)

@@ -1,6 +1,6 @@
 // Import required modules
 const express = require("express"); // framework to build the RESTful API
-const routes = require("./routes/routes.js");
+const routes = require("./routes"); // Update the import statement to reflect the correct location of routes.js
 const cors = require("cors"); // allows cross-origin requests
 const bcrypt = require("bcrypt"); // for password hashing
 const jwt = require("jsonwebtoken"); // for user authentication
