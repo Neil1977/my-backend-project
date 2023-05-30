@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const middleware = require("../middleware/middleware"); // Import the middleware module
+const middleware = require("../server/middleware/middleware");
 
 // Route to create a new post
 router.post("/posts/create", middleware, (req, res) => {
