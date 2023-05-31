@@ -56,4 +56,18 @@ describe("Protected Routes", () => {
   });
 
   // Add more test cases for authorized and unauthorized requests
+  it("should return an unauthorized status when not authorized", async () => {
+    // Send a GET request to a protected route without the JWT token
+    const response = await request(app).get("/protected");
+
+    // Assert that the response status is 401 (Unauthorized)
+    expect(response.status).toBe(401);
+
+    // Add more assertions for the response body if needed
+  });
+
+  // Add more test cases for authorized and unauthorized requests
 });
+
+// Add more test cases as needed
+
