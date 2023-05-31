@@ -41,5 +41,4 @@ router.get("/posts/:id", middleware, (req, res) => {
   res.status(200).json(post);
 });
 
-// Export the router
 module.exports = router;

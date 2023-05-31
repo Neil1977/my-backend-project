@@ -3,21 +3,22 @@ const app = require('../../server/server');
 
 describe('Authentication', () => {
   it('should authenticate a user and return a JWT token', (done) => {
-    // Mock a user object with necessary details
     const user = {
       email: 'test@example.com',
       password: 'test123',
     };
 
-    // Send a POST request to the login endpoint
+    // Send a POST request to the '/login' endpoint with the user credentials
     request(app)
       .post('/login')
       .send(user)
-      .expect(200)
+      .expect(200) // Expect a 200 response status code
+      .expect('Content-Type', /json/) // Expect the response to have JSON content type
       .end((err, response) => {
-        if (err) return done(err); // Pass the error to 'done'
+        if (err) return done(err);
+        // Expect the response body to have a 'token' property
         expect(response.body).toHaveProperty('token');
-        done(); // Call 'done' to indicate that the test is complete
+        done();
       });
   });
 
@@ -28,27 +29,32 @@ describe('Protected Routes', () => {
   let authToken;
 
   beforeEach((done) => {
-    // Mock an authenticated user and get the JWT token
+    const user = {
+      email: 'test@example.com',
+      password: 'test123',
+    };
+
+    // Authenticate a user and obtain the JWT token
     request(app)
       .post('/login')
-      .send({ email: 'test@example.com', password: 'test123' })
+      .send(user)
       .end((err, response) => {
-        if (err) return done(err); // Pass the error to 'done'
+        if (err) return done(err);
         authToken = response.body.token;
-        done(); // Call 'done' to indicate that the setup is complete
+        done();
       });
   });
 
   it('should get a protected resource when authorized', (done) => {
-    // Send a GET request to a protected route with the JWT token
+    // Send a GET request to the '/protected' endpoint with the JWT token in the 'Authorization' header
     request(app)
       .get('/protected')
       .set('Authorization', `Bearer ${authToken}`)
-      .expect(200)
+      .expect(200) // Expect a 200 response status code
+      .expect('Content-Type', /json/) // Expect the response to have JSON content type
       .end((err, response) => {
-        if (err) return done(err); // Pass the error to 'done'
-        // Add more assertions for the response body if needed
-        done(); // Call 'done' to indicate that the test is complete
+        if (err) return done(err);
+        done();
       });
   });
 
@@ -56,3 +62,4 @@ describe('Protected Routes', () => {
 });
 
 module.exports = app;
+
