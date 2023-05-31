@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const middleware = require("./server/middleware");
+const middleware = require("./middleware");
 
 // Route to create a new post
 router.post("/posts/create", middleware, (req, res) => {
@@ -42,3 +42,4 @@ router.get("/posts/:id", middleware, (req, res) => {
 });
 
 module.exports = router;
+
