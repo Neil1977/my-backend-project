@@ -1,6 +1,5 @@
-// Import the 'supertest' library to make HTTP requests
 const request = require('supertest');
-const app = require('../server/server');
+const app = require('../../server/server');
 
 describe('Authentication', () => {
   it('should authenticate a user and return a JWT token', (done) => {
