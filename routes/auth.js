@@ -1,8 +1,5 @@
-// Import dependencies
 const express = require("express");
 const jwt = require("jsonwebtoken");
-
-// Create a new instance of the Express router
 const router = express.Router();
 
 // Route handler for /login
@@ -21,15 +18,15 @@ router.get("/logout", (req, res) => {
 router.get("/callback", (req, res) => {
   // Complete the authentication flow and retrieve user information
   req.oidc.callback({
-    afterCallback: "/dashboard", // Redirecting to the specified page after successful callback
-    failureRedirect: "/login", // Redirecting to the specified page in case of authentication failure
+    afterCallback: "/dashboard",
+    failureRedirect: "/login",
     successCallback: async (req, res) => {
       try {
         // Generate a JWT token using Auth0
         const token = jwt.sign(
-          { sub: req.oidc.user.sub }, // Include the user's sub (subject) identifier in the token
+          { sub: req.oidc.user.sub },
           process.env.JWT_SECRET || "default_secret",
-          { expiresIn: "1h" } // Set the token expiration time
+          { expiresIn: "1h" }
         );
 
         // Store the JWT token in a secure HTTP-only cookie
@@ -39,12 +36,10 @@ router.get("/callback", (req, res) => {
         res.redirect("/dashboard");
       } catch (error) {
         console.error("Error generating JWT token:", error);
-        // Handle the error
         res.status(500).send("Error generating JWT token");
       }
     },
   });
 });
 
-// Export the router
 module.exports = router;

@@ -1,9 +1,4 @@
-const jwt = require("jsonwebtoken"); // Importing the jsonwebtoken library using the require function. This allows you to use the functionality provided by the library for token verification and decoding.
-
-// Other dependencies
-// Add any other dependencies you may need for your middleware.
-
-// Define the middleware function
+const jwt = require("jsonwebtoken");
 const middleware = (req, res, next) => {
   // Extract the token from the request headers
   const token = req.headers.authorization;
@@ -30,3 +25,4 @@ const middleware = (req, res, next) => {
 };
 
 module.exports = middleware;
+
