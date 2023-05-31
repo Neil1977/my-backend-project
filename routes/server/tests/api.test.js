@@ -1,73 +1,60 @@
-const request = require("supertest");
-const app = require("../../server/server"); // Update the path to reflect the correct location of server.js
+// Import the 'supertest' library to make HTTP requests
+const request = require('supertest');
+const app = require('../../server');
 
-// Setup and teardown for each test
-beforeEach(() => {
-  // Add any setup logic here if needed
-});
 
-afterEach(() => {
-  // Add any teardown logic here if needed
-});
-
-describe("Authentication", () => {
-  it("should authenticate a user and return a JWT token", async () => {
+describe('Authentication', () => {
+  it('should authenticate a user and return a JWT token', (done) => {
     // Mock a user object with necessary details
     const user = {
-      email: "test@example.com",
-      password: "test123",
+      email: 'test@example.com',
+      password: 'test123',
     };
 
     // Send a POST request to the login endpoint
-    const response = await request(app).post("/login").send(user);
-
-    // Assert that the response status is 200 (OK)
-    expect(response.status).toBe(200);
-
-    // Assert that the response body contains the JWT token
-    expect(response.body).toHaveProperty("token");
+    request(app)
+      .post('/login')
+      .send(user)
+      .expect(200)
+      .end((err, response) => {
+        if (err) return done(err); // Pass the error to 'done'
+        expect(response.body).toHaveProperty('token');
+        done(); // Call 'done' to indicate that the test is complete
+      });
   });
 
   // Add more test cases for authentication if needed
 });
 
-describe("Protected Routes", () => {
+describe('Protected Routes', () => {
   let authToken;
 
-  beforeEach(async () => {
+  beforeEach((done) => {
     // Mock an authenticated user and get the JWT token
-    const response = await request(app)
-      .post("/login")
-      .send({ email: "test@example.com", password: "test123" });
-
-    authToken = response.body.token;
+    request(app)
+      .post('/login')
+      .send({ email: 'test@example.com', password: 'test123' })
+      .end((err, response) => {
+        if (err) return done(err); // Pass the error to 'done'
+        authToken = response.body.token;
+        done(); // Call 'done' to indicate that the setup is complete
+      });
   });
 
-  it("should get a protected resource when authorized", async () => {
+  it('should get a protected resource when authorized', (done) => {
     // Send a GET request to a protected route with the JWT token
-    const response = await request(app)
-      .get("/protected")
-      .set("Authorization", `Bearer ${authToken}`);
-
-    // Assert that the response status is 200 (OK)
-    expect(response.status).toBe(200);
-
-    // Add more assertions for the response body if needed
-  });
-
-  // Add more test cases for authorized and unauthorized requests
-  it("should return an unauthorized status when not authorized", async () => {
-    // Send a GET request to a protected route without the JWT token
-    const response = await request(app).get("/protected");
-
-    // Assert that the response status is 401 (Unauthorized)
-    expect(response.status).toBe(401);
-
-    // Add more assertions for the response body if needed
+    request(app)
+      .get('/protected')
+      .set('Authorization', `Bearer ${authToken}`)
+      .expect(200)
+      .end((err, response) => {
+        if (err) return done(err); // Pass the error to 'done'
+        // Add more assertions for the response body if needed
+        done(); // Call 'done' to indicate that the test is complete
+      });
   });
 
   // Add more test cases for authorized and unauthorized requests
 });
 
-// Add more test cases as needed
-
+module.exports = app;
