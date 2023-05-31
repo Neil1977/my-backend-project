@@ -1,11 +1,13 @@
 // Import required modules
+require("dotenv").config(); // read .env file variables
 const express = require("express"); // framework to build the RESTful API
 const routes = require("../routes");
 const cors = require("cors"); // allows cross-origin requests
 const bcrypt = require("bcrypt"); // for password hashing
 const jwt = require("jsonwebtoken"); // for user authentication
 const sqlite3 = require("sqlite3").verbose(); // SQLite database library
-require("dotenv").config(); // read .env file variables
+
+console.log(process.env);
 const { auth } = require("express-openid-connect");
 
 // initialize the Express app
