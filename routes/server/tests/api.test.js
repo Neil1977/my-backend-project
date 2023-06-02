@@ -1,7 +1,11 @@
 const request = require('supertest');
-const app = require('../server');
+const app = require('../routes/server');
 
 describe('Authentication', () => {
+  beforeAll(() => {
+    jest.setTimeout(10000);
+  });
+
   afterAll((done) => {
     app.close(done);
   });

@@ -16,6 +16,7 @@ const config = {
   baseURL: 'http://localhost:3000',
   clientID: 'uoV8TW1fofgs6bCpDM2xOGlZSDpIPTIG',
   issuerBaseURL: 'https://dev-zel8ugr8zgj0slv2.us.auth0.com',
+  response_mode: 'query', // Updated response_mode
 };
 
 app.use(express.json());
@@ -48,10 +49,17 @@ app.get('/protected', requiresAuth(), (req, res) => {
 db.serialize(() => {
   db.run('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, password TEXT)');
 
-  app.listen(3000, () => {
-    console.log('Server is running on http://localhost:3000');
+  const server = app.listen(3000, () => {
+    console.log('Server is running on port 3000');
   });
+
+  // Export the app instance
+  module.exports = {
+    app,
+    close: (callback) => {
+      server.close(callback);
+    },
+  };
 });
 
-module.exports = app;
 
