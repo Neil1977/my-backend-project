@@ -16,7 +16,6 @@ const config = {
   baseURL: 'http://localhost:3000',
   clientID: 'uoV8TW1fofgs6bCpDM2xOGlZSDpIPTIG',
   issuerBaseURL: 'https://dev-zel8ugr8zgj0slv2.us.auth0.com',
-  response_mode: 'query', // Update response_mode to 'query'
 };
 
 app.use(express.json());
@@ -34,49 +33,15 @@ app.get('/', (req, res) => {
 const db = new sqlite3.Database('./database.sqlite');
 
 app.post('/register', async (req, res) => {
-  const { email, password } = req.body;
-
-  // Hash the password using bcrypt
-  const hashedPassword = await bcrypt.hash(password, 10);
-
-  // Insert the user into the 'users' table with the hashed password
-  db.run('INSERT INTO users (email, password) VALUES (?, ?)', [email, hashedPassword], (err) => {
-    if (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Failed to register user' });
-    } else {
-      res.sendStatus(201);
-    }
-  });
+  // ...rest of the code
 });
 
 app.post('/login', (req, res) => {
-  const { email, password } = req.body;
-
-  // Retrieve the user from the 'users' table based on the email
-  db.get('SELECT * FROM users WHERE email = ?', [email], async (err, user) => {
-    if (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Failed to authenticate user' });
-    } else if (!user) {
-      res.status(401).json({ error: 'Invalid credentials' });
-    } else {
-      // Compare the provided password with the hashed password stored in the database
-      const passwordMatch = await bcrypt.compare(password, user.password);
-      if (passwordMatch) {
-        // Generate a JWT token
-        const token = jwt.sign({ sub: user.id }, config.secret);
-        res.json({ token });
-      } else {
-        res.status(401).json({ error: 'Invalid credentials' });
-      }
-    }
-  });
+  // ...rest of the code
 });
 
 app.get('/protected', requiresAuth(), (req, res) => {
-  // Respond with a protected resource
-  res.json({ message: 'This is a protected resource' });
+  // ...rest of the code
 });
 
 // Initialize the database and start the server
@@ -89,3 +54,4 @@ db.serialize(() => {
 });
 
 module.exports = app;
+
