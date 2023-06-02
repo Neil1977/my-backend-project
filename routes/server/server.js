@@ -16,6 +16,7 @@ const config = {
   baseURL: 'http://localhost:3000',
   clientID: 'uoV8TW1fofgs6bCpDM2xOGlZSDpIPTIG',
   issuerBaseURL: 'https://dev-zel8ugr8zgj0slv2.us.auth0.com',
+  response_mode: 'query', // Update response_mode to 'query'
 };
 
 app.use(express.json());
