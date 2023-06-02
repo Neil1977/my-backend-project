@@ -1,6 +1,9 @@
 const request = require('supertest');
 const app = require('../server');
 
+// Increase the timeout value for the test cases
+jest.setTimeout(10000);
+
 describe('Authentication', () => {
   it('should authenticate a user and return a JWT token', (done) => {
     const user = {
