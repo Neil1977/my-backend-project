@@ -1,6 +1,13 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
+const { auth } = require('express-openid-connect');
 const router = express.Router();
+
+const config = {
+  // other configuration options
+  response_mode: 'query', // Example value for response_mode
+  // more configuration options
+};
 
 // Route handler for /login
 router.get("/login", (req, res) => {
@@ -41,5 +48,7 @@ router.get("/callback", (req, res) => {
     },
   });
 });
+
+router.use(auth(config));
 
 module.exports = router;
