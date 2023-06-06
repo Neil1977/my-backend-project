@@ -10,19 +10,21 @@ function authenticateToken(req, res, next) {
 
   // Check if the token exists
   if (!token) {
+    // Token not found, send a 401 Unauthorized response
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
   try {
-    // Verify the token
+    // Verify the token using the JWT_SECRET from the environment variables
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 
-    // Attach the decoded token to the request object
+    // Attach the decoded token to the request object for further use
     req.user = decodedToken;
 
     // Move to the next middleware or route handler
     next();
   } catch (err) {
+    // Token verification failed, send a 401 Unauthorized response
     return res.status(401).json({ error: 'Invalid token' });
   }
 }
@@ -30,3 +32,4 @@ function authenticateToken(req, res, next) {
 module.exports = {
   authenticateToken,
 };
+

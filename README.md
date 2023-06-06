@@ -76,15 +76,7 @@ my-backend-project/
 ├── package.json
 ├── middleware.js (Completed)
 ├── server.js (Completed)
-└── ...
-
-
-
-
-
-
-
-
+└── .env
 
 Keep the client-side code in the client directory.
 Keep the server-side code in the server directory and create separate subdirectories for controllers, db, models, routes, and tests.

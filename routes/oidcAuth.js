@@ -7,10 +7,11 @@ const config = {
   authRequired: true,
   auth0Logout: true,
   secret: process.env.AUTH0_SECRET,
-  baseURL: 'http://localhost:4002',
+  baseURL: process.env.BASE_URL,
   clientID: process.env.AUTH0_CLIENT_ID,
-  issuerBaseURL: process.env.AUTH0_ISSUER_BASE_URL,
+  issuerBaseURL: process.env.ISSUER_BASE_URL,
 };
+
 
 // Route handler for /login
 router.get('/login', (req, res) => {

@@ -1,4 +1,6 @@
 const jwt = require("jsonwebtoken");
+
+// Middleware function
 const middleware = (req, res, next) => {
   // Extract the token from the request headers
   const token = req.headers.authorization;
@@ -24,5 +26,7 @@ const middleware = (req, res, next) => {
   }
 };
 
+// Export the middleware function
 module.exports = middleware;
+
 

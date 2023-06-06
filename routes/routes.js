@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const middleware = require("./server/middleware");
 
-
 // Route to create a new post
 router.post("/posts/create", middleware, (req, res) => {
   // Extract the necessary data from the request body
