@@ -1,3 +1,4 @@
+// Import required modules
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
@@ -11,7 +12,7 @@ const config = {
   authRequired: false,
   auth0Logout: true,
   secret: process.env.JWT_SECRET || 'default_secret',
-  baseURL: 'http://localhost:4000', // Change the port number to 4000
+  baseURL: 'http://localhost', // Remove the port number here
   clientID: 'uoV8TW1fofgs6bCpDM2xOGlZSDpIPTIG',
   issuerBaseURL: 'https://dev-zel8ugr8zgj0slv2.us.auth0.com',
 };
@@ -47,24 +48,26 @@ app.get('/protected', requiresAuth(), (req, res) => {
 });
 
 // ...
-// Initialize the database and start the server
+// Initialize the database and start the servers
 db.serialize(() => {
   db.run('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, password TEXT)');
 
-  const port = process.argv[2] || 4000;
-  const server = app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+  const server1 = app.listen(4000, () => {
+    console.log('Server 1 is running on port 4000');
   });
-  
-  // Export the server instance instead of the app
+
+  const server2 = app.listen(4001, () => {
+    console.log('Server 2 is running on port 4001');
+  });
+
+  // Export the server instances
   module.exports = {
-    server, // Change 'app' to 'server'
+    server1,
+    server2,
     close: (callback) => {
-      server.close(callback);
+      server1.close(() => {
+        server2.close(callback);
+      });
     },
   };
 });
-
-
-
-
