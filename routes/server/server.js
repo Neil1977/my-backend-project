@@ -15,7 +15,6 @@ const config = {
   baseURL: 'http://localhost:3000',
   clientID: 'uoV8TW1fofgs6bCpDM2xOGlZSDpIPTIG',
   issuerBaseURL: 'https://dev-zel8ugr8zgj0slv2.us.auth0.com',
-  response_mode: 'query',
 };
 
 // Enable JSON body parsing and CORS
@@ -64,5 +63,7 @@ db.serialize(() => {
     },
   };
 });
+
+
 
 
