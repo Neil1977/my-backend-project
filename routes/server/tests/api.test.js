@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../server');
+const { server, close } = require('../server/server');
 
 describe('Authentication', () => {
   beforeAll(() => {
@@ -7,7 +7,9 @@ describe('Authentication', () => {
   });
 
   afterAll((done) => {
-    app.close(done);
+    close(() => {
+      done();
+    });
   });
 
   it('should authenticate a user and return a JWT token', (done) => {
@@ -16,7 +18,7 @@ describe('Authentication', () => {
       password: 'test123',
     };
 
-    request(app)
+    request(server)
       .post('/login')
       .send(user)
       .expect(200)
@@ -41,7 +43,7 @@ describe('Protected Routes', () => {
       password: 'test123',
     };
 
-    request(app)
+    request(server)
       .post('/login')
       .send(user)
       .end((err, response) => {
@@ -55,11 +57,13 @@ describe('Protected Routes', () => {
   });
 
   afterAll((done) => {
-    app.close(done);
+    close(() => {
+      done();
+    });
   });
 
   it('should get a protected resource when authorized', (done) => {
-    request(app)
+    request(server)
       .get('/protected')
       .set('Authorization', `Bearer ${authToken}`)
       .expect(200)
