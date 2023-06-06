@@ -47,6 +47,7 @@ app.get('/protected', requiresAuth(), (req, res) => {
   // ...rest of the code
 });
 
+// ...
 // Initialize the database and start the server
 db.serialize(() => {
   db.run('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, password TEXT)');
@@ -55,13 +56,14 @@ db.serialize(() => {
     console.log('Server is running on port 4000'); // Update the console log message
   });
 
-  // Export the app instance
+  // Export the server instance instead of the app
   module.exports = {
-    app,
+    server, // Change 'app' to 'server'
     close: (callback) => {
       server.close(callback);
     },
   };
 });
+
 
 
