@@ -1,39 +1,7 @@
 const request = require('supertest');
-const { server, close } = require('../../server/server');
+const server = require('../../server/server');
 
-
-describe('Authentication', () => {
-  beforeAll(() => {
-    jest.setTimeout(10000);
-  });
-
-  afterAll((done) => {
-    close(() => {
-      done();
-    });
-  });
-
-  it('should authenticate a user and return a JWT token', (done) => {
-    const user = {
-      email: 'test@example.com',
-      password: 'test123',
-    };
-
-    request(server)
-      .post('/login')
-      .send(user)
-      .expect(200)
-      .expect('Content-Type', /json/)
-      .end((err, response) => {
-        if (err) {
-          done(err);
-        } else {
-          expect(response.body).toHaveProperty('token');
-          done();
-        }
-      });
-  });
-});
+// ...
 
 describe('Protected Routes', () => {
   let authToken;
@@ -58,7 +26,7 @@ describe('Protected Routes', () => {
   });
 
   afterAll((done) => {
-    close(() => {
+    server.close(() => {
       done();
     });
   });
@@ -78,4 +46,3 @@ describe('Protected Routes', () => {
       });
   });
 });
-

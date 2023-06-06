@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "node routes/server/server.js",
-    "dev": "concurrently \"node routes/server/server.js 4000\" \"node routes/server/server.js 4001\""
+    "dev": "concurrently \"node routes/server/server.js 4002\" \"node routes/server/server.js 4003\""
   },
   "keywords": [],
   "author": "",

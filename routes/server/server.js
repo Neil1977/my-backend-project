@@ -48,26 +48,17 @@ app.get('/protected', requiresAuth(), (req, res) => {
 });
 
 // ...
-// Initialize the database and start the servers
+
+// Initialize the database and start the server
 db.serialize(() => {
   db.run('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, password TEXT)');
 
-  const server1 = app.listen(4000, () => {
-    console.log('Server 1 is running on port 4000');
+  const server = app.listen(4002, () => {
+    console.log('Server is running on port 4002');
   });
 
-  const server2 = app.listen(4001, () => {
-    console.log('Server 2 is running on port 4001');
-  });
-
-  // Export the server instances
-  module.exports = {
-    server1,
-    server2,
-    close: (callback) => {
-      server1.close(() => {
-        server2.close(callback);
-      });
-    },
-  };
+  // Export the server instance
+  module.exports = server;
 });
+
+
