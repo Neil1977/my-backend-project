@@ -12,7 +12,7 @@ const config = {
   authRequired: false,
   auth0Logout: true,
   secret: process.env.JWT_SECRET || 'default_secret',
-  baseURL: 'http://localhost:3000',
+  baseURL: 'http://localhost:4000', // Change the port number to 4000
   clientID: 'uoV8TW1fofgs6bCpDM2xOGlZSDpIPTIG',
   issuerBaseURL: 'https://dev-zel8ugr8zgj0slv2.us.auth0.com',
 };
@@ -51,8 +51,8 @@ app.get('/protected', requiresAuth(), (req, res) => {
 db.serialize(() => {
   db.run('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, password TEXT)');
 
-  const server = app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+  const server = app.listen(4000, () => { // Change the port number to 4000
+    console.log('Server is running on port 4000'); // Update the console log message
   });
 
   // Export the app instance
@@ -63,7 +63,5 @@ db.serialize(() => {
     },
   };
 });
-
-
 
 
