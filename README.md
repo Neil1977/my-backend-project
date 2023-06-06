@@ -29,7 +29,7 @@ JavaScript, Express, React, SQLite3, Jest, and Auth0 (for OAuth)
 - [x] Implement the routes and handlers for OAuth authentication, including `/login`, `/logout`, and `/callback`.
 - [x] Use the `jsonwebtoken` library to generate JSON Web Tokens (JWTs) using Auth0 for user authorization.
 - [x] Implement the necessary middleware to protect routes and prevent unauthorized access.
-- [ ] Test your backend API to ensure that authentication and authorization are working as expected.
+- [x] Test your backend API to ensure that authentication and authorization are working as expected.
 - [x] Create the Star Wars Encyclopedia API routes and handlers to provide access to Star Wars information.
 - [x] Implement Authentication and Authorization for the Star Wars Encyclopedia routes.
 
@@ -77,9 +77,6 @@ my-backend-project/
 ├── middleware.js (Completed)
 ├── server.js (Completed)
 └── .env
-
-Keep the client-side code in the client directory.
-Keep the server-side code in the server directory and create separate subdirectories for controllers, db, models, routes, and tests.
 
 Please note that this diagram reflects the current state based on the progress made. The completed files are marked as (Completed), and the remaining files and folders are indicated with (To be added) and will need to be created to complete the desired project structure.
 
