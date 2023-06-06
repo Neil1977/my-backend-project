@@ -1,14 +1,13 @@
+// Import required modules
 require('dotenv').config();
 const express = require('express');
-const routes = require('../routes');
 const cors = require('cors');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const sqlite3 = require('sqlite3').verbose();
 const { auth, requiresAuth } = require('express-openid-connect');
 
 const app = express();
 
+// Configuration for Auth0
 const config = {
   authRequired: false,
   auth0Logout: true,
@@ -16,31 +15,35 @@ const config = {
   baseURL: 'http://localhost:3000',
   clientID: 'uoV8TW1fofgs6bCpDM2xOGlZSDpIPTIG',
   issuerBaseURL: 'https://dev-zel8ugr8zgj0slv2.us.auth0.com',
-  response_mode: 'query', // Updated response_mode
+  response_mode: 'query',
 };
 
+// Enable JSON body parsing and CORS
 app.use(express.json());
 app.use(cors());
 
 // Add authentication middleware using express-openid-connect
 app.use(auth(config));
 
+// Home route
 app.get('/', (req, res) => {
-  // Check if the user is authenticated and send an appropriate response
   res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
 });
 
 // Create a new SQLite database instance
 const db = new sqlite3.Database('./database.sqlite');
 
+// Register route
 app.post('/register', async (req, res) => {
   // ...rest of the code
 });
 
+// Login route
 app.post('/login', (req, res) => {
   // ...rest of the code
 });
 
+// Protected route
 app.get('/protected', requiresAuth(), (req, res) => {
   // ...rest of the code
 });
