@@ -64,19 +64,27 @@ my-backend-project/
 │   ├── auth.js (Completed)
 │   ├── create-database.js (Completed)
 │   ├── routes.js (Completed)
-│   ├── authorizationMiddleware.js (To be added)
+│   ├── authorizationMiddleware.js (WORK IN PROGRESS)
 │   ├── associatedDataRoutes.js (To be added)
 │   ├── associatedDataHandlers.js (To be added)
 │   ├── oidcAuth.js (WORK IN PROGRESS)
 │   ├── adminFunctionality.js (To be added)
+│   ├── entryController.js (WORK IN PROGRESS)
 │   └── starwars.db (Completed)
 ├── README.md
-├── database.sqlite
 ├── package-lock.json
 ├── package.json
 ├── middleware.js (Completed)
 ├── server.js (Completed)
 └── ...
+
+
+
+
+
+
+
+
 
 Keep the client-side code in the client directory.
 Keep the server-side code in the server directory and create separate subdirectories for controllers, db, models, routes, and tests.
