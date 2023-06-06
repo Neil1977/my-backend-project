@@ -1,5 +1,6 @@
 const request = require('supertest');
-const { server, close } = require('../server/server');
+const { server, close } = require('../../server/server');
+
 
 describe('Authentication', () => {
   beforeAll(() => {
