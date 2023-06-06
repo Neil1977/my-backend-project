@@ -1,4 +1,3 @@
-// Import required modules
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
@@ -52,10 +51,11 @@ app.get('/protected', requiresAuth(), (req, res) => {
 db.serialize(() => {
   db.run('CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, password TEXT)');
 
-  const server = app.listen(4000, () => { // Change the port number to 4000
-    console.log('Server is running on port 4000'); // Update the console log message
+  const port = process.argv[2] || 4000;
+  const server = app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
   });
-
+  
   // Export the server instance instead of the app
   module.exports = {
     server, // Change 'app' to 'server'
@@ -64,6 +64,7 @@ db.serialize(() => {
     },
   };
 });
+
 
 
 
