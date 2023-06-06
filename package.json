@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "node routes/server/server.js",
-    "dev": "concurrently \"npm start --prefix routes/server 4000\" \"npm start --prefix routes/server 4001\""
+    "dev": "concurrently \"node server.js 4000\" \"node server.js 4001\""
   },
   "keywords": [],
   "author": "",
