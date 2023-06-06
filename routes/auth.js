@@ -1,54 +1,22 @@
-const express = require("express");
-const jwt = require("jsonwebtoken");
-const { auth } = require('express-openid-connect');
+const express = require('express');
 const router = express.Router();
 
-const config = {
-  // other configuration options
-  response_mode: 'query', // Example value for response_mode
-  // more configuration options
-};
-
 // Route handler for /login
-router.get("/login", (req, res) => {
-  req.oidc.login({ returnTo: "/dashboard" });
-  // Redirect the user to the Auth0 login page
+router.get('/login', (req, res) => {
+  req.oidc.login({ returnTo: 'http://localhost:4002/dashboard' });
 });
 
 // Route handler for /logout
-router.get("/logout", (req, res) => {
-  req.oidc.logout({ returnTo: "/" });
-  // Clear the user session and redirect to the home page
+router.get('/logout', (req, res) => {
+  req.oidc.logout({ returnTo: 'http://localhost:4002/' });
 });
 
 // Route handler for /callback
-router.get("/callback", (req, res) => {
-  // Complete the authentication flow and retrieve user information
+router.get('/callback', (req, res) => {
   req.oidc.callback({
-    afterCallback: "/dashboard",
-    failureRedirect: "/login",
-    successCallback: async (req, res) => {
-      try {
-        // Generate a JWT token using Auth0
-        const token = jwt.sign(
-          { sub: req.oidc.user.sub },
-          process.env.JWT_SECRET || "default_secret",
-          { expiresIn: "1h" }
-        );
-
-        // Store the JWT token in a secure HTTP-only cookie
-        res.cookie("token", token, { httpOnly: true });
-
-        // Redirect to the specified page after successful callback
-        res.redirect("/dashboard");
-      } catch (error) {
-        console.error("Error generating JWT token:", error);
-        res.status(500).send("Error generating JWT token");
-      }
-    },
+    afterCallback: 'http://localhost:4002/dashboard',
+    failureRedirect: 'http://localhost:4002/login',
   });
 });
-
-router.use(auth(config));
 
 module.exports = router;
