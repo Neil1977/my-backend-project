@@ -64,6 +64,11 @@ my-backend-project/
 │   ├── auth.js (Completed)
 │   ├── create-database.js (Completed)
 │   ├── routes.js (Completed)
+│   ├── authorizationMiddleware.js (To be added)
+│   ├── associatedDataRoutes.js (To be added)
+│   ├── associatedDataHandlers.js (To be added)
+│   ├── oidcAuth.js (WORK IN PROGRESS)
+│   ├── adminFunctionality.js (To be added)
 │   └── starwars.db (Completed)
 ├── README.md
 ├── database.sqlite
@@ -71,11 +76,6 @@ my-backend-project/
 ├── package.json
 ├── middleware.js (Completed)
 ├── server.js (Completed)
-├── authorizationMiddleware.js (To be added)
-├── associatedDataRoutes.js (To be added)
-├── associatedDataHandlers.js (To be added)
-├── oidcAuth.js (To be added)
-├── adminFunctionality.js (To be added)
 └── ...
 
 Keep the client-side code in the client directory.
