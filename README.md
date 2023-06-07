@@ -59,24 +59,24 @@ my-backend-project/
 │   ├── server/
 │   │   ├── tests/
 │   │   │   └── api.test.js (WORK IN PROGRESS)
-│   │   ├── middleware.js (Completed)
-│   │   └── server.js (Completed)
-│   ├── auth.js (Completed)
-│   ├── create-database.js (Completed)
-│   ├── routes.js (Completed)
+│   │   ├── middleware.js (Completed and checked)
+│   │   └── server.js (Completed and checked)
+│   ├── auth.js (Completed and checked)
+│   ├── create-database.js (Completed and checked)
+│   ├── routes.js (Completed and checked)
 │   ├── authorizationMiddleware.js (WORK IN PROGRESS)
 │   ├── associatedDataRoutes.js (To be added)
 │   ├── associatedDataHandlers.js (To be added)
 │   ├── oidcAuth.js (WORK IN PROGRESS)
 │   ├── adminFunctionality.js (To be added)
 │   ├── entryController.js (WORK IN PROGRESS)
-│   └── starwars.db (Completed)
+│   └── starwars.db (Completed and checked)
 ├── README.md
-├── package-lock.json
-├── package.json
-├── middleware.js (Completed)
-├── server.js (Completed)
-└── .env
+├── package-lock.json (Completed and checked)
+├── package.json (Completed and checked)
+├── middleware.js (Completed and checked)
+├── server.js (Completed and checked)
+└── .env (Completed and checked)
 
 Please note that this diagram reflects the current state based on the progress made. The completed files are marked as (Completed), and the remaining files and folders are indicated with (To be added) and will need to be created to complete the desired project structure.
 
