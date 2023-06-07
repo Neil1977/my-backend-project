@@ -6,6 +6,8 @@ Design and build a fully-functional, back-end-only API that serves as an encyclo
 
 JavaScript, Express, React, SQLite3, Jest, and Auth0 (for OAuth)
 
+npm run dev should start both concurrent servers.
+
 ## Tier 1 — MVP Application - CRUD and REST
 
 - [x] As a User, I want to read entries from the database.
