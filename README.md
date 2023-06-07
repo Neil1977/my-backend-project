@@ -1,4 +1,5 @@
-# Star Wars Encyclopedia API
+# 
+
 
 Design and build a fully-functional, back-end-only API that serves as an encyclopedia for Star Wars information. The API will include Authentication and Authorization, protecting certain routes with Authorization.
 
